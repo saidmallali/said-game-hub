@@ -11,6 +11,7 @@ import { Platform } from "./hooks/useGames";
 export interface GameQuery {
   genre: Genre | null;
   platform: Platform | null;
+  sortOrder: string;
 }
 
 function App() {
@@ -22,6 +23,10 @@ function App() {
 
   const handelSelectPlatform = (plf: Platform) => {
     setGameQuery({ ...gameQuery, platform: plf });
+  };
+
+  const handelSelectOrder = (sortOrder: string) => {
+    setGameQuery({ ...gameQuery, sortOrder });
   };
 
   return (
@@ -52,7 +57,10 @@ function App() {
             selectedPlatform={gameQuery.platform}
             onSelectPlatform={handelSelectPlatform}
           />
-          <SortSelector />
+          <SortSelector
+            sortOrder={gameQuery.sortOrder}
+            onSelectSortOrder={handelSelectOrder}
+          />
         </HStack>
         <GameGrid gameQuery={gameQuery} />
       </GridItem>
