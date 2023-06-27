@@ -9,7 +9,7 @@ import {
   Heading,
 } from "@chakra-ui/react";
 import useData from "../hooks/useData";
-import { Genre } from "../hooks/useGenres";
+import useGenres, { Genre } from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/image-url";
 import GenreListSkeleton from "./GenreListSkeleton";
 
@@ -19,7 +19,8 @@ interface Props {
 }
 
 const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
-  const { Data, isLoading, error } = useData<Genre>("/genres");
+  const { Data, isLoading, error } = useGenres();
+  // const { Data, isLoading, error } = useData<Genre>("/genres");
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
   // if (isLoading) return <Spinner />;
 
