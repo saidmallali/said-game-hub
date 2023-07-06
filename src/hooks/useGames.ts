@@ -3,6 +3,7 @@ import { GameQuery } from "../App";
 import { useQuery, useInfiniteQuery } from "@tanstack/react-query";
 import APIClient from "../services/api-client";
 import { Platform } from "../hooks/usePlatforms";
+import convertToMilliscond from "../utilities/convertToMilliscond";
 
 export interface Game {
   id: number;
@@ -31,7 +32,7 @@ const useGames = (gameQuery: GameQuery) =>
       return lastPage.next ? allPages.length + 1 : undefined;
     },
 
-    staleTime: 24 * 60 * 60 * 100,
+    staleTime: convertToMilliscond("24h"),
   });
 
 export default useGames;
