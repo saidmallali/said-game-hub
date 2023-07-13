@@ -12,7 +12,7 @@ const GameTrailer = ({ gameId }: Props) => {
 
   if (isLoading) return null;
   if (error) throw error;
-
+  if (data?.results.length === 0) return null;
   return (
     <>
       <HStack paddingY={5}>
